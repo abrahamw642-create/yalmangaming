@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-chair" preserveAspectRatio="xMidYMid meet">
+<title id="t-chair">Gaming chair — illustration</title>
+<defs>
+<linearGradient id="s-chair" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-chair" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-chair" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-chair" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-chair);stroke:url(#s-chair);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-chair)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-chair)"/>
+<g class="art"><path d="M138 34h124c14 0 22 10 22 24v92c0 14-8 24-22 24H138c-14 0-22-10-22-24V58c0-14 8-24 22-24z"/><rect x="156" y="14" width="88" height="28" rx="12"/><path d="M138 44L138 164" class="d"/><path d="M262 44L262 164" class="d"/><path d="M150 74L250 74" class="d"/><path d="M150 100L250 100" class="d"/><path d="M150 126L250 126" class="d"/><path d="M110 178h180c12 0 18 8 18 18v12c0 10-6 16-18 16H110c-12 0-18-6-18-16v-12c0-10 6-18 18-18z"/><rect x="70" y="148" width="34" height="11" rx="5"/><path d="M88 159L88 180" class="d"/><rect x="296" y="148" width="34" height="11" rx="5"/><path d="M312 159L312 180" class="d"/><rect x="192" y="224" width="16" height="26" rx="4"/><path d="M200 250 130 274M200 250l70 24M200 250v28M200 250l-46 30M200 250l46 30" fill="none"/><circle cx="126" cy="278" r="7" class="d"/><circle cx="274" cy="278" r="7" class="d"/><circle cx="200" cy="282" r="7" class="a"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

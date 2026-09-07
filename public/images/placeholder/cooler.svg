@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-cooler" preserveAspectRatio="xMidYMid meet">
+<title id="t-cooler">CPU cooler — illustration</title>
+<defs>
+<linearGradient id="s-cooler" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-cooler" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-cooler" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-cooler" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-cooler);stroke:url(#s-cooler);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-cooler)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-cooler)"/>
+<g class="art"><rect x="150" y="52" width="116" height="158" rx="5"/><path d="M150 62L266 62" class="d"/><path d="M150 73L266 73" class="d"/><path d="M150 84L266 84" class="d"/><path d="M150 95L266 95" class="d"/><path d="M150 106L266 106" class="d"/><path d="M150 117L266 117" class="d"/><path d="M150 128L266 128" class="d"/><path d="M150 139L266 139" class="d"/><path d="M150 150L266 150" class="d"/><path d="M150 161L266 161" class="d"/><path d="M150 172L266 172" class="d"/><path d="M150 183L266 183" class="d"/><path d="M150 194L266 194" class="d"/><path d="M172 52v170" class="d"/><path d="M196 52v170" class="d"/><path d="M220 52v170" class="d"/><path d="M244 52v170" class="d"/><rect x="160" y="210" width="96" height="24" rx="4"/><circle cx="208" cy="222" r="6" class="a"/><rect x="50" y="84" width="104" height="104" rx="12"/><circle cx="102" cy="136" r="42"/><circle cx="102" cy="136" r="12"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(0 102 136)"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(60 102 136)"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(120 102 136)"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(180 102 136)"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(240 102 136)"/><path d="M102 94a42 42 0 0 1 34 22" class="d" transform="rotate(300 102 136)"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

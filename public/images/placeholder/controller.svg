@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-controller" preserveAspectRatio="xMidYMid meet">
+<title id="t-controller">Controller — illustration</title>
+<defs>
+<linearGradient id="s-controller" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-controller" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-controller" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-controller" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-controller);stroke:url(#s-controller);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-controller)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-controller)"/>
+<g class="art"><path d="M118 106c24-16 56-22 82-22s58 6 82 22c26 16 36 62 24 88-10 22-36 22-50 6l-24-28h-64l-24 28c-14 16-40 16-50-6-12-26-2-72 24-88z"/><rect x="148" y="90" width="34" height="12" rx="6" class="d"/><rect x="218" y="90" width="34" height="12" rx="6" class="d"/><path d="M144 138h16v-16h16v16h16v16h-16v16h-16v-16h-16z"/><circle cx="250" cy="126" r="9" class="d"/><circle cx="272" cy="148" r="9" class="d"/><circle cx="250" cy="170" r="9" class="d"/><circle cx="228" cy="148" r="9" class="a"/><circle cx="178" cy="184" r="17"/><circle cx="178" cy="184" r="7" class="d"/><circle cx="232" cy="184" r="17"/><circle cx="232" cy="184" r="7" class="d"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

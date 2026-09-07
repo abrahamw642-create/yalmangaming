@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-microphone" preserveAspectRatio="xMidYMid meet">
+<title id="t-microphone">Microphone — illustration</title>
+<defs>
+<linearGradient id="s-microphone" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-microphone" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-microphone" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-microphone" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-microphone);stroke:url(#s-microphone);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-microphone)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-microphone)"/>
+<g class="art"><rect x="162" y="44" width="76" height="132" rx="38"/><path d="M174 62L226 62" class="d"/><path d="M174 76L226 76" class="d"/><path d="M174 90L226 90" class="d"/><path d="M174 104L226 104" class="d"/><path d="M174 118L226 118" class="d"/><path d="M174 132L226 132" class="d"/><circle cx="200" cy="158" r="6" class="a"/><path d="M124 78a80 92 0 0 0 0 84" fill="none"/><path d="M276 78a80 92 0 0 1 0 84" fill="none"/><path d="M124 120L162 120" class="d"/><path d="M276 120L238 120" class="d"/><rect x="192" y="172" width="16" height="56" rx="5"/><ellipse cx="200" cy="238" rx="62" ry="15"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

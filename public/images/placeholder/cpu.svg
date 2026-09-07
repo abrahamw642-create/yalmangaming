@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-cpu" preserveAspectRatio="xMidYMid meet">
+<title id="t-cpu">Processor — illustration</title>
+<defs>
+<linearGradient id="s-cpu" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-cpu" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-cpu" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-cpu" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-cpu);stroke:url(#s-cpu);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-cpu)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-cpu)"/>
+<g class="art"><path d="M152 90L152 74" class="d"/><path d="M168 90L168 74" class="d"/><path d="M184 90L184 74" class="d"/><path d="M200 90L200 74" class="d"/><path d="M216 90L216 74" class="d"/><path d="M232 90L232 74" class="d"/><path d="M248 90L248 74" class="d"/><path d="M152 210L152 226" class="d"/><path d="M168 210L168 226" class="d"/><path d="M184 210L184 226" class="d"/><path d="M200 210L200 226" class="d"/><path d="M216 210L216 226" class="d"/><path d="M232 210L232 226" class="d"/><path d="M248 210L248 226" class="d"/><path d="M140 102L124 102" class="d"/><path d="M140 118L124 118" class="d"/><path d="M140 134L124 134" class="d"/><path d="M140 150L124 150" class="d"/><path d="M140 166L124 166" class="d"/><path d="M140 182L124 182" class="d"/><path d="M140 198L124 198" class="d"/><path d="M260 102L276 102" class="d"/><path d="M260 118L276 118" class="d"/><path d="M260 134L276 134" class="d"/><path d="M260 150L276 150" class="d"/><path d="M260 166L276 166" class="d"/><path d="M260 182L276 182" class="d"/><path d="M260 198L276 198" class="d"/><rect x="140" y="90" width="120" height="120" rx="10"/><rect x="168" y="118" width="64" height="64" rx="6"/><path d="M168 138L148 138" class="d"/><path d="M168 162L148 162" class="d"/><path d="M232 138L252 138" class="d"/><path d="M232 162L252 162" class="d"/><circle cx="152" cy="102" r="4" class="a"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

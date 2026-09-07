@@ -1,0 +1,590 @@
+// Yalman Gaming — data model
+// -------------------------------------------------------------------------
+// Portability note: this schema deliberately avoids `enum`, scalar lists and
+// the `Json` scalar so that the SAME schema file runs on SQLite (local dev)
+// and PostgreSQL (production). To move to Postgres, change the datasource
+// provider to "postgresql" and point DATABASE_URL at your instance — no model
+// changes required. Fields that hold structured data store JSON *text* and are
+// read/written through the typed helpers in `src/lib/specs.ts`.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Catalog
+// ---------------------------------------------------------------------------
+
+model Brand {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  slug     String    @unique
+  logoUrl  String?
+  website  String?
+  products Product[]
+
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String?
+  // Component kind this category maps to (see COMPONENT_KINDS in src/lib/types.ts).
+  kind        String?
+  icon        String?
+  accent      String?
+  sortOrder   Int     @default(0)
+  featured    Boolean @default(false)
+
+  parentId String?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children Category[] @relation("CategoryTree")
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([parentId])
+  @@index([kind])
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  sku         String  @unique
+  slug        String  @unique
+  name        String
+  // Short marketing line shown on cards.
+  headline    String?
+  description String?
+
+  // `kind` drives the compatibility engine and the PC builder steps.
+  kind String
+
+  brandId    String?
+  brand      Brand?   @relation(fields: [brandId], references: [id], onDelete: SetNull)
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  // --- Commerce ------------------------------------------------------------
+  // All money is whole Pakistani Rupees (PKR). No decimals are used anywhere.
+  price     Int
+  salePrice Int?
+  costPrice Int?
+  // True while the price is seeded sample data rather than a figure confirmed
+  // by Yalman Gaming. The storefront shows a "sample pricing" notice and the
+  // admin lists these first so they can be replaced.
+  samplePrice Boolean @default(true)
+
+  stock      Int     @default(0)
+  lowStockAt Int     @default(3)
+  supplier   String?
+  warranty   String?
+
+  status   String  @default("active") // active | draft | archived
+  featured Boolean @default(false)
+  isNew    Boolean @default(false)
+  onDeal   Boolean @default(false)
+
+  rating      Float @default(0)
+  reviewCount Int   @default(0)
+
+  // --- Compatibility-critical attributes -----------------------------------
+  // Only the fields relevant to a given `kind` are populated. These are real
+  // columns (not JSON) because the builder filters and validates on them.
+
+  // CPU + motherboard + cooler
+  socket    String?
+  chipset   String?
+  tdp       Int? // watts — the vendor's PUBLISHED figure, shown on the product page
+  // Sustained package power the cooler and PSU actually have to handle. Needed
+  // because `tdp` means different things per vendor: AMD publishes TDP (a
+  // 120W part draws ~162W PPT) while Intel publishes base power (a 125W part
+  // sustains ~250W PL2). Comparing a cooler's rating against `tdp` therefore
+  // passes an air cooler that a Core Ultra 9 would cook. Falls back to a
+  // multiple of `tdp` when unset.
+  peakPowerW Int?
+  cores     Int?
+  threads   Int?
+  baseClock Float? // GHz
+  boostClock Float? // GHz
+  integratedGraphics Boolean @default(false)
+
+  // Memory
+  memoryType   String? // DDR4 | DDR5
+  memorySpeed  Int? // MT/s
+  memorySlots  Int? // motherboard
+  maxMemoryGb  Int? // motherboard
+  capacityGb   Int? // RAM kit / storage
+  moduleCount  Int? // RAM kit
+
+  // GPU
+  vramGb            Int?
+  gpuLengthMm       Int?
+  requiredConnectors String? // JSON: ["8-pin","8-pin"] or ["12VHPWR"]
+  recommendedPsuW   Int?
+  slotWidth         Float?
+
+  // Storage
+  storageInterface String? // nvme-gen4 | nvme-gen5 | sata | hdd
+  formFactorDrive  String? // M.2-2280 | 2.5in | 3.5in
+
+  // Motherboard
+  formFactor String? // ATX | Micro-ATX | Mini-ITX | E-ATX
+  m2Slots    Int?
+  sataPorts  Int?
+  pcieVersion String?
+
+  // PSU
+  wattage        Int?
+  efficiency     String? // 80+ Bronze | Gold | Platinum | Titanium
+  modular        String? // full | semi | non
+  psuFormFactor  String? // ATX | SFX | SFX-L
+  psuLengthMm    Int?
+  providedConnectors String? // JSON: {"pcie8":4,"12vhpwr":1}
+
+  // Cooler
+  coolerType      String? // air | aio
+  coolerHeightMm  Int?
+  radiatorSizeMm  Int? // 240 | 280 | 360
+  supportedSockets String? // JSON: ["AM5","LGA1851"]
+  coolingCapacityW Int?
+
+  // Case
+  supportedFormFactors String? // JSON: ["ATX","Micro-ATX","Mini-ITX"]
+  maxGpuLengthMm       Int?
+  maxCoolerHeightMm    Int?
+  maxPsuLengthMm       Int?
+  radiatorSupport      String? // JSON: {"top":360,"front":360,"rear":120}
+  caseStyle            String? // Mid Tower | Full Tower | Mini ITX
+  dimensionsMm         String? // "450 x 210 x 480"
+  includedFans         Int?
+
+  // Peripherals / monitors
+  resolution   String? // 1920x1080 | 2560x1440 | 3840x2160
+  refreshRate  Int?
+  panelSizeIn  Float?
+  panelType    String? // IPS | VA | TN | OLED
+  connectivity String? // wired | wireless | both
+  switchType   String?
+
+  rgb Boolean @default(false)
+
+  // Free-form spec rows for the product page spec table.
+  // JSON: [{"group":"Performance","label":"Boost clock","value":"5.2 GHz"}]
+  specSheet String?
+
+  images       ProductImage[]
+  reviews      Review[]
+  orderItems   OrderItem[]
+  cartItems    CartItem[]
+  wishlistItems WishlistItem[]
+  buildComponents BuildComponent[]
+  stockAlerts  StockAlert[]
+  benchmarks   Benchmark[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([kind])
+  @@index([categoryId])
+  @@index([brandId])
+  @@index([status])
+  @@index([featured])
+  @@index([socket])
+  @@index([price])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  sortOrder Int     @default(0)
+  // Marks a generated/placeholder visual rather than a real product photo.
+  placeholder Boolean @default(false)
+
+  @@index([productId])
+}
+
+// Benchmark data powering the "expected FPS" figures. Never fabricated at
+// render time — the storefront only shows numbers that exist in this table,
+// and every row carries its `source`.
+model Benchmark {
+  id         String  @id @default(cuid())
+  productId  String
+  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  game       String
+  resolution String // 1080p | 1440p | 4K
+  preset     String // Low | Medium | High | Ultra
+  avgFps     Int
+  onePercentLow Int?
+  // Where the figure came from, e.g. "Yalman in-store test" or a publication.
+  source     String
+  cpuContext String? // CPU used for the measurement
+  notes      String?
+
+  createdAt DateTime @default(now())
+
+  @@unique([productId, game, resolution, preset])
+  @@index([game])
+}
+
+// ---------------------------------------------------------------------------
+// PC Builder
+// ---------------------------------------------------------------------------
+
+model CustomBuild {
+  id        String @id @default(cuid())
+  // Short public code used for share links, e.g. /build/AB12CD.
+  shareCode String @unique
+  name      String @default("Untitled Build")
+
+  goal       String? // gaming | streaming | editing | rendering | ai | office
+  budgetMin  Int?
+  budgetMax  Int?
+  resolution String?
+  targetFps  Int?
+  // JSON: ["Valorant","Cyberpunk 2077"]
+  games      String?
+
+  status String @default("draft") // draft | saved | quoted | ordered
+
+  // Denormalised totals, recomputed server-side on every save.
+  componentsTotal Int @default(0)
+  servicesTotal   Int @default(0)
+  total           Int @default(0)
+  estimatedWatts  Int @default(0)
+  recommendedPsuW Int @default(0)
+
+  // JSON array of assembly service ids, e.g. ["assembly","windows","rgb"]
+  services String?
+
+  // JSON snapshot of the compatibility report at save time.
+  compatibility String?
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  components    BuildComponent[]
+  quoteRequests QuoteRequest[]
+  orderItems    OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model BuildComponent {
+  id        String      @id @default(cuid())
+  buildId   String
+  build     CustomBuild @relation(fields: [buildId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  kind      String
+  quantity  Int         @default(1)
+  // Unit price captured when the part was added, so a saved build keeps the
+  // price the customer actually saw.
+  unitPrice Int
+
+  @@index([buildId])
+  @@index([productId])
+}
+
+// Admin-editable rules layered on top of the built-in engine in
+// src/lib/compatibility.ts. Lets Yalman encode store-specific knowledge
+// without a code change.
+model CompatibilityRule {
+  id          String  @id @default(cuid())
+  name        String
+  // sourceKind/targetKind identify which pair the rule applies to.
+  sourceKind  String
+  targetKind  String
+  // Field on each side that must relate, e.g. socket <-> socket.
+  sourceField String
+  targetField String
+  operator    String  @default("equals") // equals | lte | gte | includes
+  severity    String  @default("error") // error | warning
+  message     String
+  active      Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model QuoteRequest {
+  id       String       @id @default(cuid())
+  buildId  String?
+  build    CustomBuild? @relation(fields: [buildId], references: [id], onDelete: SetNull)
+
+  name    String
+  phone   String
+  email   String?
+  city    String?
+  message String?
+
+  // JSON snapshot so the request survives the build being edited or deleted.
+  snapshot String?
+
+  status String @default("new") // new | contacted | quoted | won | lost
+  notes  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+}
+
+// ---------------------------------------------------------------------------
+// Customers, cart, orders
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String  @id @default(cuid())
+  email        String  @unique
+  passwordHash String?
+  name         String?
+  phone        String?
+  role         String  @default("customer") // customer | admin
+
+  addresses    Address[]
+  orders       Order[]
+  carts        Cart[]
+  wishlist     WishlistItem[]
+  builds       CustomBuild[]
+  reviews      Review[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Address {
+  id       String  @id @default(cuid())
+  userId   String
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label    String?
+  line1    String
+  line2    String?
+  city     String
+  province String
+  postal   String?
+  isDefault Boolean @default(false)
+
+  @@index([userId])
+}
+
+model Cart {
+  id     String @id @default(cuid())
+  // Anonymous carts are keyed by a cookie token.
+  token  String @unique
+  userId String?
+  user   User?  @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  items CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model CartItem {
+  id     String @id @default(cuid())
+  cartId String
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  // A cart line can be a whole custom build instead of a single product.
+  buildId String?
+
+  name      String
+  unitPrice Int
+  quantity  Int    @default(1)
+  imageUrl  String?
+  // JSON snapshot for build lines (component list, services, watts).
+  meta      String?
+
+  createdAt DateTime @default(now())
+
+  @@index([cartId])
+  @@index([productId])
+}
+
+model WishlistItem {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}
+
+model Order {
+  id          String @id @default(cuid())
+  orderNumber String @unique
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  customerName  String
+  customerPhone String
+  customerEmail String?
+
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  province     String
+  postal       String?
+  instructions String?
+
+  paymentMethod String // cod | bank-transfer | card
+  paymentStatus String @default("pending") // pending | paid | refunded
+  status        String @default("pending") // pending | confirmed | building | shipped | delivered | cancelled
+
+  subtotal Int
+  delivery Int @default(0)
+  discount Int @default(0)
+  total    Int
+
+  couponCode String?
+  notes      String?
+
+  items OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  buildId   String?
+  build     CustomBuild? @relation(fields: [buildId], references: [id], onDelete: SetNull)
+
+  name      String
+  unitPrice Int
+  quantity  Int    @default(1)
+  meta      String?
+
+  @@index([orderId])
+}
+
+model Coupon {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  description   String?
+  discountType  String    @default("percent") // percent | fixed
+  discountValue Int
+  minSpend      Int?
+  maxUses       Int?
+  usedCount     Int       @default(0)
+  active        Boolean   @default(true)
+  startsAt      DateTime?
+  expiresAt     DateTime?
+
+  createdAt DateTime @default(now())
+}
+
+// Real customer reviews only. Nothing here is seeded with invented text —
+// the seed script creates zero Review rows; Yalman adds them from the admin.
+model Review {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  authorName String
+  rating     Int
+  title      String?
+  body       String
+  verified   Boolean @default(false)
+  approved   Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+  @@index([approved])
+}
+
+model StockAlert {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  email     String?
+  phone     String?
+  notified  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+}
+
+// ---------------------------------------------------------------------------
+// Site content managed from the admin
+// ---------------------------------------------------------------------------
+
+model Banner {
+  id        String  @id @default(cuid())
+  title     String
+  subtitle  String?
+  imageUrl  String?
+  ctaLabel  String?
+  ctaHref   String?
+  placement String  @default("home-hero")
+  active    Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  createdAt DateTime @default(now())
+}
+
+// A completed machine Yalman has built, shown in the "Built by Yalman"
+// showcase. Component list is a JSON snapshot.
+model ShowcaseBuild {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  tagline     String?
+  description String?
+  tier        String? // Entry | Mid-Range | High-End | Extreme
+  target      String? // "1440p 144FPS"
+  price       Int?
+  samplePrice Boolean @default(true)
+  components  String? // JSON: [{"kind":"cpu","name":"..."}]
+  imageUrl    String?
+  accent      String?
+  featured    Boolean @default(false)
+  sortOrder   Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSignup {
+  id    String @id @default(cuid())
+  email String @unique
+
+  createdAt DateTime @default(now())
+}

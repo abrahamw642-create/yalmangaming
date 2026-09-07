@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-motherboard" preserveAspectRatio="xMidYMid meet">
+<title id="t-motherboard">Motherboard — illustration</title>
+<defs>
+<linearGradient id="s-motherboard" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-motherboard" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-motherboard" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-motherboard" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-motherboard);stroke:url(#s-motherboard);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-motherboard)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-motherboard)"/>
+<g class="art"><rect x="70" y="44" width="262" height="212" rx="10"/><rect x="100" y="72" width="66" height="66" rx="5"/><rect x="112" y="84" width="42" height="42" rx="3" class="d"/><circle cx="106" cy="78" r="3.5" class="a"/><rect x="190" y="62" width="9" height="92" rx="3"/><rect x="205" y="62" width="9" height="92" rx="3"/><rect x="220" y="62" width="9" height="92" rx="3"/><rect x="235" y="62" width="9" height="92" rx="3"/><rect x="308" y="62" width="14" height="48" rx="3" class="d"/><rect x="96" y="158" width="116" height="9" rx="3"/><circle cx="220" cy="162" r="5" class="d"/><rect x="96" y="190" width="132" height="13" rx="3"/><path d="M104 190L104 203" class="d"/><path d="M117 190L117 203" class="d"/><path d="M130 190L130 203" class="d"/><path d="M143 190L143 203" class="d"/><path d="M156 190L156 203" class="d"/><path d="M169 190L169 203" class="d"/><path d="M182 190L182 203" class="d"/><path d="M195 190L195 203" class="d"/><path d="M208 190L208 203" class="d"/><rect x="252" y="176" width="56" height="46" rx="6"/><path d="M258 184L302 184" class="d"/><path d="M258 194L302 194" class="d"/><path d="M258 204L302 204" class="d"/><path d="M258 214L302 214" class="d"/><circle cx="82" cy="56" r="4" class="d"/><circle cx="320" cy="56" r="4" class="d"/><circle cx="82" cy="244" r="4" class="d"/><circle cx="320" cy="244" r="4" class="d"/><path d="M230 120h50v34" class="d"/><path d="M166 105h20v54h30" class="d"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

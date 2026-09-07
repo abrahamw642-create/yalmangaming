@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-ram" preserveAspectRatio="xMidYMid meet">
+<title id="t-ram">Memory kit — illustration</title>
+<defs>
+<linearGradient id="s-ram" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-ram" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-ram" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-ram" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-ram);stroke:url(#s-ram);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-ram)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-ram)"/>
+<g class="art"><g opacity="0.45"><rect x="96" y="86" width="248" height="46" rx="6"/><path d="M110 92L110 126" class="d"/><path d="M130 92L130 126" class="d"/><path d="M150 92L150 126" class="d"/><path d="M170 92L170 126" class="d"/><path d="M190 92L190 126" class="d"/><path d="M210 92L210 126" class="d"/><path d="M230 92L230 126" class="d"/><path d="M250 92L250 126" class="d"/><path d="M270 92L270 126" class="d"/><path d="M290 92L290 126" class="d"/><path d="M310 92L310 126" class="d"/></g><rect x="56" y="142" width="248" height="46" rx="6"/><path d="M70 148L70 182" class="d"/><path d="M90 148L90 182" class="d"/><path d="M110 148L110 182" class="d"/><path d="M130 148L130 182" class="d"/><path d="M150 148L150 182" class="d"/><path d="M170 148L170 182" class="d"/><path d="M190 148L190 182" class="d"/><path d="M210 148L210 182" class="d"/><path d="M230 148L230 182" class="d"/><path d="M250 148L250 182" class="d"/><path d="M270 148L270 182" class="d"/><rect x="72" y="118" width="16" height="24" rx="3" class="a"/><path d="M64 188h108M196 188h100"/><path d="M78 188L78 200" class="d"/><path d="M94 188L94 200" class="d"/><path d="M110 188L110 200" class="d"/><path d="M126 188L126 200" class="d"/><path d="M142 188L142 200" class="d"/><path d="M158 188L158 200" class="d"/><path d="M206 188L206 200" class="d"/><path d="M222 188L222 200" class="d"/><path d="M238 188L238 200" class="d"/><path d="M254 188L254 200" class="d"/><path d="M270 188L270 200" class="d"/><path d="M172 188v10h24v-10" class="d"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-labelledby="t-case" preserveAspectRatio="xMidYMid meet">
+<title id="t-case">PC case — illustration</title>
+<defs>
+<linearGradient id="s-case" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient>
+<linearGradient id="f-case" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a6b0c6" stop-opacity=".12"/><stop offset="1" stop-color="#a6b0c6" stop-opacity=".02"/>
+</linearGradient>
+<radialGradient id="g-case" cx="50%" cy="48%" r="52%">
+<stop offset="0" stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+</radialGradient>
+<pattern id="p-case" width="20" height="20" patternUnits="userSpaceOnUse">
+<path d="M20 0H0v20" fill="none" stroke="#94a3c8" stroke-opacity=".07" stroke-width="1"/>
+</pattern>
+<style>
+.art{fill:url(#f-case);stroke:url(#s-case);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.art .d{fill:none;stroke:#a6b0c6;stroke-opacity:.55;stroke-width:1.3}
+.art .a{fill:#22d3ee;fill-opacity:.28;stroke:#22d3ee}
+</style>
+</defs>
+<rect width="400" height="300" fill="url(#p-case)"/>
+<ellipse cx="200" cy="146" rx="176" ry="128" fill="url(#g-case)"/>
+<g class="art"><rect x="112" y="30" width="176" height="240" rx="12"/><rect x="112" y="30" width="26" height="240" rx="12"/><circle cx="120" cy="48" r="2.6" class="d"/><circle cx="132" cy="48" r="2.6" class="d"/><circle cx="120" cy="66" r="2.6" class="d"/><circle cx="132" cy="66" r="2.6" class="d"/><circle cx="120" cy="84" r="2.6" class="d"/><circle cx="132" cy="84" r="2.6" class="d"/><circle cx="120" cy="102" r="2.6" class="d"/><circle cx="132" cy="102" r="2.6" class="d"/><circle cx="120" cy="120" r="2.6" class="d"/><circle cx="132" cy="120" r="2.6" class="d"/><circle cx="120" cy="138" r="2.6" class="d"/><circle cx="132" cy="138" r="2.6" class="d"/><circle cx="120" cy="156" r="2.6" class="d"/><circle cx="132" cy="156" r="2.6" class="d"/><circle cx="120" cy="174" r="2.6" class="d"/><circle cx="132" cy="174" r="2.6" class="d"/><circle cx="120" cy="192" r="2.6" class="d"/><circle cx="132" cy="192" r="2.6" class="d"/><circle cx="120" cy="210" r="2.6" class="d"/><circle cx="132" cy="210" r="2.6" class="d"/><circle cx="120" cy="228" r="2.6" class="d"/><circle cx="132" cy="228" r="2.6" class="d"/><rect x="150" y="46" width="122" height="208" rx="8"/><path d="M168 22L168 30" class="d"/><path d="M190 22L190 30" class="d"/><path d="M212 22L212 30" class="d"/><path d="M234 22L234 30" class="d"/><path d="M256 22L256 30" class="d"/><rect x="162" y="60" width="98" height="80" rx="4" class="d"/><rect x="162" y="158" width="98" height="18" rx="4"/><circle cx="178" cy="214" r="14" class="d"/><circle cx="211" cy="214" r="14" class="d"/><circle cx="244" cy="214" r="14" class="d"/><circle cx="125" cy="256" r="4" class="a"/><path d="M132 270v14h22v-14" class="d"/><path d="M248 270v14h22v-14" class="d"/></g>
+<ellipse cx="200" cy="284" rx="120" ry="7" fill="#04050a" fill-opacity=".45"/>
+</svg>

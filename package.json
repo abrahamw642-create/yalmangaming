@@ -1,0 +1,48 @@
+{
+  "name": "yalman-gaming",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yalman Gaming \u2014 gaming PCs, premium components and a custom PC builder. Hafeez Centre, Lahore.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node --experimental-strip-types prisma/seed.ts",
+    "db:reset": "prisma migrate reset --force",
+    "test:compat": "node scripts/check-compatibility.mjs"
+  },
+  "prisma": {
+    "seed": "node --experimental-strip-types prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.0",
+    "@react-three/drei": "^10.0.6",
+    "@react-three/fiber": "^9.1.2",
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.15.0",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.545.0",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.3.0",
+    "three": "^0.180.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@types/three": "^0.180.0",
+    "prisma": "^6.8.0",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.0"
+  }
+}
