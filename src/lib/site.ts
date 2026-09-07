@@ -12,7 +12,7 @@ export const siteConfig = {
   tagline: "Build the machine you actually want.",
   description:
     "Gaming PCs, premium components and custom builds engineered for performance. Visit us at Hafeez Centre, Gulberg III, Lahore — or configure your build online.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000",
   existingSite: "https://yalmangaming.com",
   locale: "en_PK",
   currency: "PKR",
